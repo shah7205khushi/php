@@ -1,6 +1,6 @@
 <?php
 
-include('2.php');
+include('3.php');
 
 ?>
 
@@ -38,7 +38,7 @@ if(isset($ses)){
     ?>
             <div><?php echo $ses; ?></div>
             <br>
-            <img src="<?php echo $dir; ?>" width="500px">
+            <!-- <img src="<?php echo $dir; ?>" width="500px"> -->
             <?php
     }
 ?>

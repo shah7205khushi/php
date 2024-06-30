@@ -1,3 +1,2 @@
 
-khushi,k1,khu@gmail.com
-ytyut,ytu,ytut
+jil shah,123,khushi123@gmail.com

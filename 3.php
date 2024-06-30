@@ -1,25 +1,44 @@
 <?php
-session_start();
 
-// Check if user is logged in
-if (!isset($_SESSION['user'])) {
-    header("Location: 1.php");
-    exit();
+if(isset($_POST['btn'])){
+$file = $_FILES['file'];
+$file_size = $file['size'];
+$file_name = $file['name'];
+// print_r($file);
+$tmp = $file['tmp_name'];
+$pathexe = pathinfo($file_name,PATHINFO_EXTENSION);
+$ext = strtolower($pathexe);
+$acext = array('doc','ppt','pdf','txt');
+
+
+if($file_size == 0)
+{
+    $err = 'Select A image File';
+    return false;
 }
 
-$user = $_SESSION['user'];
-?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Profile</title>
-</head>
-<body>
-    <h1>Welcome, <?php echo $user['username']; ?>!</h1>
-    <h2>welcome to home page you can change the password or Logout from this page</h2>
-    <p><a href="2.php">Change Password</a></p>
-    <p><a href="4.php">Logout</a></p>
-</body>
-</html>
+if($file_size > 500000)
+{
+    $err = 'Your FIle size Too Long';
+    return false;
+}
+
+if (!in_array($ext,$acext)) {
+    $err = 'invalid file Type';
+    return false;
+}
+
+$dir = 'k/'.rand().".".$ext;
+
+$upld = move_uploaded_file($tmp,$dir);
+
+if($upld){
+    $ses = 'File Uploaded';
+}else{
+    $err = 'file Not Upload';
+}
+
+}
+
+?>

@@ -1,6 +1,6 @@
 <?php
 
-include('2.php');
+include('4.php');
 
 ?>
 
@@ -9,11 +9,8 @@ include('2.php');
 <!doctype html>
 <html lang="en">
     <head>
-        
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        
         <title>Php File Upload</title>
     </head>
     <body>

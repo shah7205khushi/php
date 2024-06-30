@@ -1,5 +1,46 @@
 <?php
-session_start();
-session_destroy();
-header("Location: 1.php");
-exit();
+
+if(isset($_POST['btn'])){
+$file = $_FILES['file'];
+$file_size = $file['size'];
+$file_name = $file['name'];
+// print_r($file);
+$tmp = $file['tmp_name'];
+$pathexe = pathinfo($file_name,PATHINFO_EXTENSION);
+$ext = strtolower($pathexe);
+$acext = array('mp3');
+$upload_max_filesize = "32M";
+
+
+
+if($file_size == 0)
+{
+    $err = 'Select A image File';
+    return false;
+}
+
+
+if($file_size > 5000000)
+{
+    $err = 'Your FIle size Too Long';
+    return false;
+}
+
+if (!in_array($ext,$acext)) {
+    $err = 'invalid file Type';
+    return false;
+}
+
+$dir = 'k/'.rand().".".$ext;
+
+$upld = move_uploaded_file($tmp,$dir);
+
+if($upld){
+    $ses = 'File Uploaded';
+}else{
+    $err = 'file Not Upload';
+}
+
+}
+
+?>

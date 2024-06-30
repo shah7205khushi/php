@@ -1,53 +1,44 @@
 <?php
-session_start();
-$conn = mysqli_connect("localhost", "root", "", "use1");
 
-// Check if user is logged in
-if (!isset($_SESSION['user'])) {
-    header("Location: 1.php");
-    exit();
+if(isset($_POST['btn'])){
+$file = $_FILES['file'];
+$file_size = $file['size'];
+$file_name = $file['name'];
+// print_r($file);
+$tmp = $file['tmp_name'];
+$pathexe = pathinfo($file_name,PATHINFO_EXTENSION);
+$ext = strtolower($pathexe);
+$acext = array('jpg','png','jpeg','gif');
+
+
+if($file_size == 0)
+{
+    $err = 'Select A image File';
+    return false;
 }
 
-// Handle password change
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $current_password =($_POST['current_password']);
-    $new_password =($_POST['new_password']);
 
-    $user_id = $_SESSION['user']['id'];
-    
-    // Verify current password
-    $sql = "SELECT * FROM users WHERE id='$user_id' AND password='$current_password'";
-    $result = mysqli_query($conn, $sql);
-
-    if (mysqli_num_rows($result) == 1) {
-        // Update password
-        $sql = "UPDATE users SET password='$new_password' WHERE id='$user_id'";
-        if (mysqli_query($conn, $sql)) {
-            echo "Password changed successfully";
-        } else {
-            echo "Error updating password: " . mysqli_error($conn);
-        }
-    } else {
-        echo "Current password is incorrect";
-    }
+if($file_size > 500000)
+{
+    $err = 'Your FIle size Too Long';
+    return false;
 }
 
-mysqli_close($conn);
+if (!in_array($ext,$acext)) {
+    $err = 'invalid file Type';
+    return false;
+}
+
+$dir = 'k/'.rand().".".$ext;
+
+$upld = move_uploaded_file($tmp,$dir);
+
+if($upld){
+    $ses = 'File Uploaded';
+}else{
+    $err = 'file Not Upload';
+}
+
+}
+
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Change Password</title>
-</head>
-<body>
-    <h1>Change Password</h1>
-    <form method="post">
-        Current Password: <input type="password" name="current_password" required><br>
-        New Password: <input type="password" name="new_password" required><br>
-        <button type="submit">Change Password</button>
-    </form>
-    <a href="3.php">Back to Profile</a>
-</body>
-</html>
