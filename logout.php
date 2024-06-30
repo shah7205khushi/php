@@ -1,7 +1,14 @@
 <?php
-// logout.php
 session_start();
+
+// Clear session
+session_unset();
 session_destroy();
-header("Location: login.php");
-exit;
+
+// Clear cookies
+setcookie('username', '', time() - 3600, "/");
+setcookie('password', '', time() - 3600, "/");
+
+header('Location: login.php');
+exit();
 ?>
