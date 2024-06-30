@@ -1,14 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
 <?php
-  echo $_FILES["fileToUpload"]["name"];
-  echo "<br>";
-  echo $_FILES["fileToUpload"]["size"];
-  echo "<br>";
-  echo $_FILES["fileToUpload"]["tmp_name"];
-  echo "<br>";
-  echo $_FILES["fileToUpload"]["error"];
-  echo "<br>";
-  echo $_FILES["fileToUpload"]["type"];
-  echo "<br>";
-  move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],"k/".$_FILES["fileToUpload"]["name"]) or 
-  die("File is not moved");
+    $temp="mSC2024";
 ?>
+<form name="form1" method="post" action="4.php?n1=<?php echo $temp ?>">
+    First Name: <input type="text" name="fname"> <br>
+    Last Name: <input type="text" name="lname"> <br>
+    Course Name: <input type="text" name="course"> <br>
+    <input type="submit" name="submit">
+</form>
+
+</body>
+</html>

@@ -1,61 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-
 <?php
 
- class Car {
- public $brand;
- public $model;
- public $color;
+echo "hello world";
+echo "<hr>";
+
+echo "hello world  how are you";
+
+echo "<hr>";
+
+$a=45;
+echo "a = $a";
+
+/*
+PHP Data Types
+
+String
+Integer
+Float (floating point numbers - also called double)
+Boolean
+Array
+Object
+NULL
+Resource
+*/
+
+$x = 5;
+var_dump($x);
+
+echo "<hr>";
+
+$x = "Hello world!";
+$y = 'Hello world!';
+
+var_dump($x);
+echo "<br>";
+var_dump($y);
+
+echo "<hr>";
+
+$x = 5985;
+var_dump($x);
+
+echo "<hr>";
+
+$x = 10.365;
+var_dump($x);
+
+echo "<hr>";
+
+$x = true;
+var_dump($x);
+
+echo "<hr>";
+
+$cars = array("Volvo","BMW","Toyota");
+var_dump($cars);
+
+echo "<hr>";
+
+$x = "Hello world!";
+$x = null;
+var_dump($x);
+
+echo "<hr>";
+
+$x = 5;
+var_dump($x);
+
+echo "<br>";
+
+$x = "Hello";
+var_dump($x);
+
+echo "<hr>";
+
+$x = 5;
+$x = (string) $x;
+var_dump($x);
+echo "<hr>";
 
 
-public function startEngine() {
-
-echo " Engine started!";
- }
- }
-
-$myCar = new Car();
- $myCar->brand = "BMW";
- $myCar->model = "Q8";
- $myCar->color = "Mat Black";
-
-echo $myCar->brand;
-echo $myCar->model;
-echo $myCar->color;
- $myCar->startEngine();
-
- //inheritance
-
-
- class Animal {
-    
-     public function makeSound() {
-     echo "Some generic sound";
-     }
-     }
-    
-     class Dog extends Animal {
-     public function makeSound() {
-     echo "Woof!";
-     }
-     }
-    
-     $dog = new Dog();
-     $dog->makeSound();
-
- ?>
-
-
-
-
-
-
-</body>
-</html>
+?>

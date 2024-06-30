@@ -1,48 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
 <?php
-$targetDirectory = "uploads/";
-$targetFile = $targetDirectory . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+    //$temp;
+    // echo $_REQUEST["n1"];
+    // echo "<br>";
+    $a=array();
+           if($_SERVER["REQUEST_METHOD"]=="POST")
+        {
+            if(isset($_POST["fname"]))
+            {
+                echo $_POST["fname"];
+                $a[$_POST["fname"]]=$_POST["fname"];
+                echo "<br>";
+                
+            }
+            if(isset($_POST["lname"]))
+            {
+                echo $_POST["lname"];
+                $a[$_POST["lname"]]=$_POST["lname"];
+                echo "<br>";
+                
+            }
+            if(isset($_POST["course"]))
+            {
+                echo $_POST["course"];
+                $a[$_POST["course"]]=$_POST["course"];
+                echo "<br>";
+                
+            }
+            print_r($a);
+        }
+        
+    ?>
 
-// Check if file is a valid image
-if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-    if($check !== false) {
-       echo "File is an image - " . $check["mime"] . ".";
-        $uploadOk = 1; 
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-}
+</body>
+</html>
 
-// Check if file already exists
-if (file_exists($targetFile)) {
-    echo "Sorry, file already exists.";
-    $uploadOk = 0;
-}
-
-// Check file size
-if ($_FILES["fileToUpload"]["size"] > 500000) {
-    echo "Sorry, your file is too large.";
-    $uploadOk = 0;
-}
-
-// Allow only certain file formats
-$allowedExtensions = array("jpg", "jpeg", "png", "gif");
-if (!in_array($imageFileType, $allowedExtensions)) {
-    echo "Sorry, only JPG, JPEG, PNG, and GIF files are allowed.";
-    $uploadOk = 0;
-}
-
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// If everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
-        echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
-    } else {
-        echo "Sorry, there was an error uploading your file.";
-    }
-}
+<!-- 
+khushi
+shah
+Msc(cs)-IV
+Array ( [khushi] => khushi [shah] => shah [Msc(cs)-IV] => Msc(cs)-IV ) -->

@@ -1,40 +1,59 @@
-<html> 
-      
-<head> 
-    <title> 
-        Button Click
-    </title> 
-</head> 
-  
-<body style="text-align:center;"> 
-      
-    <h1 style="color:green;"> 
-    Button Click
-    </h1> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     
-       
-    <?php
-        if(array_key_exists('button1', $_POST)) { 
-            button1(); 
-        } 
-        else if(array_key_exists('button2', $_POST)) { 
-            button2(); 
-        } 
-        function button1() { 
-            echo "Button 1 Clicked".$_POST["button1"]; 
-        } 
-        function button2() { 
-            echo "Button 2 Clicked".$_POST["button2"]; 
-        } 
-    ?> 
-  
-    <form method="post"> 
-        <input type="submit" name="button1"
-                 value="10" /> 
-          
-        <input type="submit" name="button2"
-             value="20" /> 
-    </form> 
-</body> 
-  
-</html> 
+<?php
+
+//control statements
+
+$a=10;
+$b=25;
+
+if ($a > $b) {
+echo "a is greater than b";
+} 
+else {
+echo "a is NOT greater than b";
+}
+
+echo "<hr>";
+
+$i= "cake";
+
+switch ($i) {
+    case "apple":
+    echo "i is apple";
+    break;
+    case "bar":
+    echo "i is bar";
+    break;
+    case "cake":
+    echo "i is cake";
+    break;
+    }
+
+echo "<hr>";
+
+echo $a < $b ?  "a is greater" :  "b is greater";
+
+echo "<hr>";
+echo "<hr>";
+echo "<hr>";
+echo "<hr>";
+echo "<hr>";
+echo "<hr>";
+echo "<hr>";
+
+
+
+
+
+?>
+
+</body>
+</html>
